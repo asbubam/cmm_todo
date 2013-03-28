@@ -2,14 +2,34 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$main_left_width:150px;
+
 #header {
 	font-family:Dotum;
 	font-size:12px;
+	padding:0 5px 5px;
+	border-bottom:1px solid #777;
+	height:15px;
+	a {
+		float:right;
+		text-decoration:none;
+		margin-left:10px;
+	}
 }
 
 #section {
 	font-family:Dotum;
 	font-size:12px;
+	.main_area {
+		.main_left {
+			float:left;
+			border-right:1px solid #777;
+			width:$main_left_width;
+		}
+		.main_center {
+			float:left;
+		}
+	}
 }
 
 #footer {

@@ -12,7 +12,6 @@ class User < ActiveRecord::Base
 
 
   def self.authenticate(_login, _password)
-    #User.find_by_login_and_password(_login, _password)
     u = find_by_login(_login)
     u && u.password == Digest::SHA1.hexdigest("#{_password}:#{u.salt}") ? u: nil
   end

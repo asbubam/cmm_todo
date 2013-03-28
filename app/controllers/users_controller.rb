@@ -29,8 +29,6 @@ class UsersController < ApplicationController
 	def update
 		@user = User.find(params[:id])
 
-		#ToDo password 공백이면 업데이트 하지않게...
-
 		if params[:user][:password].blank?
 			params[:user].delete(:password)
 			params[:user].delete(:password_confirmation)

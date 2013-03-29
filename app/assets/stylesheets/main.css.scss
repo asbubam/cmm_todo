@@ -71,10 +71,25 @@ a {
 				padding:0 0 0 20px;
 				li.project {
 					padding:2px 0;
+					font-weight:bold;
 					a:hover {
 						text-decoration:underline;
 					}
+					a.command {
+						font-size:9px;
+						font-weight:normal;
+						float:right;
+						&.red {
+							color:red;
+						}
+						&.blue {
+							color:blue;
+						}
+					}
 				}
+			}
+			.new_project {
+				margin-top:30px;
 			}
 		}
 		.main_center {
@@ -140,7 +155,7 @@ a {
     input.text { 
       float:left; 
 			width:$text_field_width;
-			border:1px solid #777;
+			border:1px solid #aaa;
     } 
   } 
   .actions { 

@@ -16,7 +16,7 @@
 }
 
 $full_width:980px;
-$main_left_width:150px;
+$main_left_width:180px;
 $label_width:80px; 
 $text_field_width:120px;
 
@@ -74,20 +74,21 @@ a {
 				margin:10px 0;
 				padding:0 0 0 20px;
 				li.project {
-					padding:2px 0;
+					margin:10px 0;
 					font-weight:bold;
 					a:hover {
 						text-decoration:underline;
 					}
-					a.command {
-						font-size:9px;
-						font-weight:normal;
+					.command {
 						float:right;
-						&.red {
+						font-size:10px;
+						font-weight:normal;
+						margin-left:3px;
+						&.delete {
 							color:red;
 						}
-						&.blue {
-							color:blue;
+						&.update {
+							//color:blue;
 						}
 					}
 				}

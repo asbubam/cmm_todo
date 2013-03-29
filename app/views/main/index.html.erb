@@ -5,11 +5,7 @@
 			<li class="project">
 				<%= link_to "All Tasks", "" %>
 			</li>
-			<% Project.all.each do |project| %>
-				<li class="project">
-					<%= link_to project.title, "" %> <%= link_to 'D', project, :confirm => "Are you sure delete '#{project.title}' ?", :method => :delete, :class => "command red" %>
-				</li>
-			<% end %>
+			<%= render :partial => '/projects/project', :collection => Project.all %>
 		</ul>
 	
 		<% if logged_in? %>

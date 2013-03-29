@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
 
+	include ActionView::Helpers::JavaScriptHelper 
+
 	protect_from_forgery
 
 	before_filter :set_current_user
@@ -26,8 +28,13 @@ class ApplicationController < ActionController::Base
 	end
 
 	def notify_error(_obj)
-		@error_obj = _obj
-		render :template => "/main/error"
+		if request.xhr?
+			error_msg = _obj.errors.full_messages.join("\r\n")
+			render :js => "alert('#{escape_javascript(error_msg)}')"
+		else
+			@error_obj = _obj
+			render :template => "/main/error"
+		end
 	end
 
 end

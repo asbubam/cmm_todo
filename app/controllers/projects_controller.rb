@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
 	before_filter :login_required
+	before_filter :permission_check, :except => [:index, :new, :create]
 
 	def new
 		@project = Project.new
@@ -17,9 +18,13 @@ class ProjectsController < ApplicationController
 		redirect_to root_path
 	end
 
-	def destroy
-		permission_check
+	def update
+		unless @project.update_attributes(params[:project])
+			notify_error(@project)
+		end
+	end
 
+	def destroy
 		unless @project.destroy
 			flash[:notice] = "destroy project failed."
 		end

@@ -2,38 +2,155 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.clearfix {
+  zoom:1;
+  &:before, &:after {
+    content:"\0020";
+    display:block;
+    height:0;
+    overflow:hidden;
+  }
+  &:after {
+    clear:both;
+  }
+}
+
+$main_width:980px;
 $main_left_width:150px;
+$label_width:80px; 
+$text_field_width:120px;
+
+a {
+	text-decoration:none;
+	color:#333;
+}
 
 #header {
 	font-family:Dotum;
 	font-size:12px;
 	padding:0 5px 5px;
-	border-bottom:1px solid #777;
-	height:15px;
-	a {
+	border-left:20px solid red;
+	border-bottom:1px solid #ccc;
+	height:13px;
+	.site_name {
+		padding-left:5px;
+		a {
+			float:left;
+			color:#333;
+			font-weight:bold;
+		}
+	}
+	.login_menu {
 		float:right;
-		text-decoration:none;
-		margin-left:10px;
+		a {
+			margin-left:10px;
+		}
 	}
 }
 
 #section {
+	@extend .clearfix;
+	border-left:20px solid #000;
 	font-family:Dotum;
 	font-size:12px;
+	color:#333;
 	.main_area {
 		.main_left {
+			height:500px;
+			padding:5px;
 			float:left;
-			border-right:1px solid #777;
+			border-right:1px solid #ccc;
 			width:$main_left_width;
+			h5 {
+				margin:0;
+				font-size:14px;
+				font-weight:bold;
+			}
+			ul.projects {
+				margin:10px 0;
+				padding:0 0 0 20px;
+				li.project {
+					padding:2px 0;
+					a:hover {
+						text-decoration:underline;
+					}
+				}
+			}
 		}
 		.main_center {
+			padding:10px 0;
 			float:left;
+			.new_task {
+				height:50px;
+			}
+			.task_list {
+				.tasks {
+					margin:0 10px;
+					width:200px;
+					float:left;
+					text-align:center;
+					padding:10px 0;
+					border-bottom:1px solid #ccc;
+					.title {
+						font-weight:bold;
+						text-align:center;
+					}
+				}
+			}
 		}
 	}
 }
 
 #footer {
+	border-top:1px solid #ccc;
 	font-family:Dotum;
 	font-size:12px;
+	.logo {
+		float:right;
+		a {
+			font-weight:bold;
+			float:left;
+			color:#333;
+			margin-left:5px;
+			&.red {
+				color:red;
+			}
+		}
+	}
+}
+
+.form_wrapper { 
+	padding-left:5px;
+  .field { 
+    @extend .clearfix; 
+    padding:5px 0; 
+    line-height:150%; 
+    label { 
+      float:left; 
+      width:$label_width; 
+      line-height:150%; 
+      color:#666; 
+    } 
+    input { 
+      font-size:12px; 
+    } 
+    select { 
+      font-size:12px; 
+    } 
+    input.text { 
+      float:left; 
+			width:$text_field_width;
+			border:1px solid #777;
+    } 
+  } 
+  .actions { 
+    input.submit { 
+      font-size:12px; 
+      margin-left:$label_width; 
+    } 
+    input { 
+      font-size:12px; 
+    } 
+  } 
 }
 

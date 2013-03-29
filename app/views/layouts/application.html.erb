@@ -13,14 +13,18 @@
   </div>
 
   <div id="header">
-    <%= link_to "Home", root_path %>
-    <% if logged_in? %>
-      <%= link_to "(#{@current_user.login})Logout", logout_path %>
-      <%= link_to "UserInfo", user_path(@current_user) %>
-    <% else %>
-      <%= link_to "Login", login_path %>
-      <%= link_to "New User", new_user_path %>
-    <% end %>
+		<div class="site_name">
+			<%= link_to SiteName, root_path %>
+		</div>
+		<div class="login_menu">
+			<% if logged_in? %>
+				<%= link_to "(#{@current_user.login})Logout", logout_path %>
+				<%= link_to "UserInfo", user_path(@current_user) %>
+			<% else %>
+				<%= link_to "Login", login_path %>
+				<%= link_to "Signup", new_user_path %>
+			<% end %>
+		</div>
   </div>
 
   <div id="section">
@@ -28,7 +32,10 @@
   </div>
 
   <div id="footer">
-  </div>
+		<div class="logo">
+			<%= link_to "Code Makes Me", "http://codemakes.me" %><%= link_to "ToDo.", "http://github.com/asbubam/cmm_todo", :class => "red" %>
+		</div>
+ </div>
 
 </body>
 </html>

@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :login
   validates_confirmation_of :password
 
-	has_many :project
+	has_many :projects
 
   before_save :salting_password
 

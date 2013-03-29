@@ -1,14 +1,31 @@
+<% @project ||= Project.new %>
 <div class="main_area">
 	<div class="main_left">
 		<ul class="projects">
 			<li class="project">
-				All Task
+				<%= link_to "All Tasks", "" %>
 			</li>
+			<% Project.all.each do |project| %>
+				<li class="project">
+					<%= link_to project.title, "" %>
+				</li>
+			<% end %>
 		</ul>
+	
+		<% if logged_in? %>
+			<div class="form_wrapper">
+				<%= form_for @project do |f| %>
+					<div class="field">
+						<%= f.text_field :title, :class => "text" %>&nbsp;↵
+					</div>
+				<% end %>
+			</div>
+		<% end %>
 
 	</div>
 
 	<div class="main_center">
-		main
+		<%= render :partial => "/main/new_task" %>
+		<%= render :partial => "/main/task_list" %>
 	</div>
 </div>

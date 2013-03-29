@@ -4,6 +4,7 @@ CmmTodo::Application.routes.draw do
   match '/logout', :to => "users#logout", :via => [:get]
 
   resources :users
+	resources :projects 
 
 	root :to => "main#index"
 end

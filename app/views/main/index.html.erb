@@ -3,7 +3,7 @@
 	<div class="main_left">
 		<ul class="projects">
 			<li class="project">
-				<%= link_to "All Tasks", "" %>
+				<%= link_to "All Tasks", root_path %>
 			</li>
 			<%= render :partial => '/projects/project', :collection => Project.all %>
 		</ul>

@@ -2,6 +2,10 @@ class ProjectsController < ApplicationController
 	before_filter :login_required
 	before_filter :permission_check, :except => [:index, :new, :create]
 
+	def show
+		render :template => "/main/index" and return
+	end
+
 	def new
 		@project = Project.new
 	end 

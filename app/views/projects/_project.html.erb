@@ -1,6 +1,6 @@
 <% project ||= @project %>
 <%= content_tag_for :li, project do %>
-	<%= link_to project.title, "" %> 
+	<%= link_to project.title, project %> 
 	<div class="command">
 		<%= link_to 'D', project, :confirm => "Are you sure delete '#{project.title}' ?", :method => :delete, :class => "command delete" %>
 		<%= link_to 'U', edit_project_path(project), :class => "command update", :remote => true %>

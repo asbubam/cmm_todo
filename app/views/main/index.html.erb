@@ -13,7 +13,7 @@
 				<div class="form_wrapper">
 					<%= form_for @project do |f| %>
 						<div class="field">
-							<%= f.text_field :title, :class => "text" %>&nbsp;↵
+							<%= f.text_field :title, :class => "text" %>&nbsp;<%= f.submit("↵") %>
 						</div>
 					<% end %>
 				</div>
@@ -23,7 +23,7 @@
 	</div>
 
 	<div class="main_center">
-		<%= render :partial => "/main/new_task" %>
-		<%= render :partial => "/main/task_list" %>
+		<%= render :partial => "/tasks/new_task" %>
+		<%= render :partial => "/tasks/task_list" %>
 	</div>
 </div>

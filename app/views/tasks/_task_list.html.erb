@@ -1,6 +1,13 @@
 <div class="task_list">
 	<div class="tasks">
 		<div class="title">ToDo</div>
+		<ul class="tasks">
+			<% Task.todo.each do |task| %>
+				<li class="task">
+					<%= task.content %>
+				</li>
+			<% end %>
+		</ul>
 	</div>
 	<div class="tasks">
 		<div class="title">Doing</div>

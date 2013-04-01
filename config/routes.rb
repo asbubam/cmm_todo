@@ -4,11 +4,14 @@ CmmTodo::Application.routes.draw do
   match '/logout', :to => "users#logout", :via => [:get]
 
   resources :users
+
 	resources :projects do
 		member do
 			match 'cancel', :via => [:get]
 		end
 	end
+
+	resources :tasks
 
 	root :to => "main#index"
 end

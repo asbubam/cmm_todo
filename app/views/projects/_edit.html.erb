@@ -1,0 +1,19 @@
+<%= content_tag_for :li, @project do %>
+	<div class="form_wrapper">
+		<%= form_for @project, :remote => true do |f| %>
+			<div class="field">
+				<%= f.text_field :title, :class => "text focus" %>
+			</div>
+			<div class="actions">
+				<%= link_to "c", cancel_project_path(@project), :remote => true %>
+				<%= f.submit("↵") %>
+			</div>
+		<% end %>
+	</div>
+<% end %>
+
+<script>
+	$(document).ready(function() {
+		$("#<%= dom_id(@project) %>").find(".focus").select();
+	});
+</script>

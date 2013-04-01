@@ -1,18 +1,10 @@
 <div class="task_list">
-	<div class="tasks">
-		<div class="title">ToDo</div>
-		<ul class="tasks">
-			<% Task.todo.each do |task| %>
-				<li class="task">
-					<%= task.content %>
-				</li>
-			<% end %>
-		</ul>
-	</div>
-	<div class="tasks">
-		<div class="title">Doing</div>
-	</div>
-	<div class="tasks">
-		<div class="title">Done</div>
-	</div>
+	<% ["ToDo", "Doing", "Done"].each do |state| %>
+		<div class="tasks">
+			<div class="title"><%= state %></div>
+			<ul class="tasks">
+				<%= render :partial => '/tasks/task', :collection => eval("Task.#{state.downcase.to_sym}") %>
+			</ul>
+		</div>
+	<% end %>
 </div>

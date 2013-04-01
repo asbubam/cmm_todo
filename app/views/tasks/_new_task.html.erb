@@ -2,7 +2,7 @@
 <div class="form_wrapper">
 	<%= form_for @task do |f| %>
 		<div class="field">
-			<%= f.text_field :content, :class => "text" %>&nbsp;<%= f.submit("↵") %>
+			<%= f.text_area :content, :class => "text", :rows => 3 %>&nbsp;<%= f.submit("add") %>
 		</div>
 	<% end %>
 </div>

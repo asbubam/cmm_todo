@@ -8,7 +8,7 @@ class Task < ActiveRecord::Base
 
 	validates :content, :presence => { :messsage => "내용을 입력해 주십시오" }
 
-	scope :todo, :conditions => "worker_id=0 and done=0"
+	scope :todo, :conditions => "worker_id=0 and done=0", :order => "id desc"
 	scope :doing, :conditions => "worker_id!=0 and done=0"
 	scope :done, :conditions => "done=1"
 

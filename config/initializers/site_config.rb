@@ -1,1 +1,1 @@
-SiteName = "ToDo"
+SiteName = "ToDo List"

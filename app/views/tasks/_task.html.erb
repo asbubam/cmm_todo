@@ -1,0 +1,16 @@
+<li class="task">
+	<div class="assign">
+		<%= task.user.name %><%= " ▶ #{task.worker.name}" unless task.worker.blank? %>
+	</div>
+	<div class="content">
+		<%= truncate(task.content, :length => 60) %>
+	</div>
+	<div class="created_at">
+		<%= "#{time_ago_in_words(task.created_at)} ago" %>
+	</div>
+	<div class="actions">
+		<%= link_to "take", "" %>
+		<%= link_to "drop", task, :confirm => "Are you sure delete?", :method => :delete %>
+	</div>
+</li>
+

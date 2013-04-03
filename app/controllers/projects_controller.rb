@@ -40,7 +40,8 @@ protected
 	def permission_check
 		@project = Project.find(params[:id])
 		unless @project.user.id == @current_user.id
-			render :text => "forbidden"
+			#render :text => "forbidden"
+			flash[:notice] = "forbidden"
 		end
 	end
 end

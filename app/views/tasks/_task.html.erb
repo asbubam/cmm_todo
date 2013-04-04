@@ -1,4 +1,5 @@
-<li class="task">
+<% task ||= @task %>
+<%= content_tag_for :li, task do %>
 	<div class="assign">
 		<%= task.user.name %><%= " ▶ #{task.worker.name}" unless task.worker.blank? %>
 	</div>
@@ -9,7 +10,8 @@
 		<%= "#{time_ago_in_words(task.created_at)} ago" %>
 	</div>
 	<div class="actions">
+		<%= link_to "edit", edit_task_path(task), :remote => true %>
 		<%= link_to "take", take_task_path(task) %>
 		<%= link_to "drop", task, :confirm => "Are you sure delete?", :method => :delete %>
 	</div>
-</li>
+<% end %>

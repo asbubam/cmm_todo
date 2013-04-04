@@ -13,7 +13,8 @@ CmmTodo::Application.routes.draw do
 
 	resources :tasks do
 		member do
-			get 'take'
+			match 'take', :via => [:get]
+			match 'cancel', :via => [:get]
 		end
 	end
 

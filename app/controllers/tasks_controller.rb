@@ -17,6 +17,12 @@ class TasksController < ApplicationController
 		redirect_to root_path
 	end
 
+	def update
+		unless @task.update_attributes(params[:task])
+			notify_error(@task)
+		end
+	end
+
 	def take
 		@task = Task.find(params[:id])
 

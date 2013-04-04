@@ -1,3 +1,4 @@
+<% project ||= @project %>
 <%= content_tag_for :li, project do %>
 	<div class="title">
 		<%= link_to project.title, project, :class => "#{ 'selected' if @project && @project.id == project.id}" %> 

@@ -2,7 +2,10 @@
 <html>
 <head>
   <title>CmmTodo</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+	<meta name="viewport" content="initial-scale=1.0; user-scalable=yes; minimum-scale=1.0; maximum-scale=1.0" /> 
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	 
+	<%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
@@ -32,6 +35,9 @@
   </div>
 
   <div id="footer">
+		<div class="header_link">
+			<a id="header_link" style="display:none" href="#header">TOP</a>
+		</div>
 		<div class="logo">
 			<%= link_to "Code Makes Me", "http://codemakes.me" %><%= link_to "ToDo.", "http://github.com/asbubam/cmm_todo", :class => "red" %>
 		</div>
@@ -39,3 +45,16 @@
 
 </body>
 </html>
+
+<script type="text/javascript">
+	document.addEventListener("touchmove", touchMove, false);
+	document.addEventListener("scroll", scroll, false);
+	
+	function touchMove(event) {
+		$("#header_link").show(); 
+	};
+
+	function scroll(event) {
+		if(window.pageYOffset == 0) $("#header_link").hide();
+	};
+</script>

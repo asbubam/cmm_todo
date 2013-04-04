@@ -1,0 +1,19 @@
+<%= content_tag_for :li, @task do %>
+	<div class="form_wrapper">
+		<%= form_for @task, :remote => true do |f| %>
+			<div class="field">
+				<%= f.text_area :content, :class => "text focus", :rows => 3 %>
+			</div>
+			<div class="actions">
+				<%= link_to "c", cancel_task_path(@task), :remote => true %>
+				<%= f.submit("↵") %>
+			</div>
+		<% end %>
+	</div>
+<% end %>
+
+<script>
+	$(document).ready(function() {
+		$("#<%= dom_id(@task) %>").find(".focus").select();
+	});
+</script>

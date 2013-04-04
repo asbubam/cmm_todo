@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   validates_confirmation_of :password
 
 	has_many :projects
+	has_many :tasks
 
   before_save :salting_password
 

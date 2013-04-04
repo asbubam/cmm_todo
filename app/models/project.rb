@@ -6,4 +6,8 @@ class Project < ActiveRecord::Base
 	belongs_to :user
 	
 	has_many :tasks
+
+	def owned_by?(u)
+		u && u.id == self.user.id
+	end
 end

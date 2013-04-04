@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
 	before_filter :login_required
-	before_filter :permission_check, :except => [:index, :new, :create]
+	before_filter :permission_check, :except => [:index, :new, :create, :take]
 
 	def new
 		@task = Task.new
@@ -13,6 +13,17 @@ class TasksController < ApplicationController
 		else
 			flash[:notice] = "save task failed."
 		end
+
+		redirect_to root_path
+	end
+
+	def take
+		@task = Task.find(params[:id])
+
+		if @task.update_attribute(:worker_id, @current_user.id)
+		else
+			flash[:notice] = "save task failed."
+		end	
 
 		redirect_to root_path
 	end

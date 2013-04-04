@@ -9,8 +9,7 @@
 		<%= "#{time_ago_in_words(task.created_at)} ago" %>
 	</div>
 	<div class="actions">
-		<%= link_to "take", "" %>
+		<%= link_to "take", take_task_path(task) %>
 		<%= link_to "drop", task, :confirm => "Are you sure delete?", :method => :delete %>
 	</div>
 </li>
-

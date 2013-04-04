@@ -11,7 +11,11 @@ CmmTodo::Application.routes.draw do
 		end
 	end
 
-	resources :tasks
+	resources :tasks do
+		member do
+			get 'take'
+		end
+	end
 
 	root :to => "main#index"
 end

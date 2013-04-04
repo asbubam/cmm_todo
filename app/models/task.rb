@@ -11,13 +11,4 @@ class Task < ActiveRecord::Base
 	scope :todo, :conditions => "worker_id=0 and done=0", :order => "id desc"
 	scope :doing, :conditions => "worker_id!=0 and done=0"
 	scope :done, :conditions => "done=1"
-
-	before_update :auto_assign
-
-protected
-	def auto_assign
-		return unless self.changes.include?(:worker_id)
-		self.user_id = self.worker_id
-	end
-
 end

@@ -2,7 +2,7 @@
 	<div class="form_wrapper">
 		<%= form_for @task, :remote => true do |f| %>
 			<div class="field">
-				<%= f.text_area :content, :class => "text focus", :rows => 3 %>
+				<%= f.text_area :content, :class => "text focus", :rows => 3, :cols => 30 %>
 			</div>
 			<div class="actions">
 				<%= link_to "c", cancel_task_path(@task), :remote => true %>

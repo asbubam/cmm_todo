@@ -1,9 +1,22 @@
-<% @task ||= Task.new %>
-<div class="form_wrapper">
-	<%= form_for @task do |f| %>
-		<div class="field">
-			<%= f.text_area :content, :class => "text", :rows => 3 %>&nbsp;<%= f.submit("add") %>
-		</div>
-	<% end %>
-</div>
+<div class="new_task_wrapper">
+	<% @task ||= Task.new %>
 
+	<div class="project_title"> 
+		<% unless @project.blank? %>
+			<%= link_to @project.title, @project %>
+		<% else %>
+			<%= link_to "All Tasks", root_path %>
+		<% end %>
+	</div>
+
+	<div class="form_wrapper">
+		<%= form_for @task do |f| %>
+			<% unless @project.blank? %>
+				<%= f.hidden_field :project_id, :value => @project.id %>
+			<% end %>
+			<div class="field">
+				<%= f.text_area :content, :class => "text", :rows => 3 %>&nbsp;<%= f.submit("add") %>
+			</div>
+		<% end %>
+	</div>
+</div>

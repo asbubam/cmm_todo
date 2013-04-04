@@ -76,8 +76,13 @@ a {
 				li.project {
 					margin:10px 0;
 					font-weight:bold;
-					a:hover {
-						text-decoration:underline;
+					.title {
+						.selected {
+							color:red;
+						}
+						a:hover {
+							text-decoration:underline;
+						}
 					}
 					.command {
 						float:right;
@@ -100,8 +105,6 @@ a {
 		.main_center {
 			padding:10px 0;
 			float:left;
-			.new_task {
-			}
 			.task_list {
 				.tasks {
 					margin:0 5px;
@@ -165,7 +168,7 @@ a {
 
 #footer {
 	width:$full_width;
-	margin:0 auto;
+	margin:0 auto 150px;
 	//border-top:1px solid #ccc;
 	font-family:Dotum;
 	font-size:12px;
@@ -218,3 +221,12 @@ a {
   } 
 }
 
+.new_task_wrapper {
+	.project_title {
+		a {
+			padding:10px;
+			font-size:17px;
+			font-weight:bold;
+		}
+	}
+}

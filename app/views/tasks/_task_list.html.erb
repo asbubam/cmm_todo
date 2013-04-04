@@ -3,7 +3,11 @@
 		<div class="tasks">
 			<div class="title"><%= state %></div>
 			<ul class="tasks">
-				<%= render :partial => '/tasks/task', :collection => eval("Task.#{state.downcase.to_sym}") %>
+				<% unless @project.blank? %>
+					<%= render :partial => '/tasks/task', :collection => eval("@project.tasks.#{state.downcase.to_sym}") %>
+				<% else %>
+					<%= render :partial => '/tasks/task', :collection => eval("Task.#{state.downcase.to_sym}") %>
+				<% end %>
 			</ul>
 		</div>
 	<% end %>

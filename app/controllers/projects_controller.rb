@@ -1,8 +1,9 @@
 class ProjectsController < ApplicationController
 	before_filter :login_required
-	before_filter :permission_check, :except => [:index, :new, :create]
+	before_filter :permission_check, :except => [:index, :new, :create, :show]
 
 	def show
+		@project = Project.find(params[:id])
 		render :template => "/main/index" and return
 	end
 

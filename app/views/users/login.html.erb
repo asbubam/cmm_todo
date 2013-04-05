@@ -3,7 +3,7 @@
 	<%= form_for :user, :url => signin_path do |f| %>
 		<div class="field">
 			<%= f.label :login, "id:" %>
-			<%= f.text_field :login, :class => "text" %>
+			<%= f.text_field :login, :class => "text", :autofocus => true %>
 		</div>
 		
 		<div class="field">

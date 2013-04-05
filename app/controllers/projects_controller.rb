@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
 
 	def show
 		@project = Project.find(params[:id])
-		render :template => "/main/index" and return
+		render :template => "/projects/index" and return
 	end
 
 	def new
@@ -20,7 +20,10 @@ class ProjectsController < ApplicationController
 			flash[:notice] = "save task failed."
 		end
 
-		redirect_to root_path
+		redirect_to projects_path
+	end
+
+	def edit
 	end
 
 	def update
@@ -34,15 +37,14 @@ class ProjectsController < ApplicationController
 			flash[:notice] = "destroy project failed."
 		end
 		
-		redirect_to root_path
+		redirect_to projects_path
 	end
 
 protected
 	def permission_check
 		@project = Project.find(params[:id])
 		unless @project.user.id == @current_user.id
-			#render :text => "forbidden"
-			flash[:notice] = "forbidden"
+			raise PermissionException
 		end
 	end
 end

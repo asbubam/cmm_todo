@@ -17,7 +17,11 @@
 
   <div id="header">
 		<div class="site_name">
-			<%= link_to SiteName, root_path %>
+			<% if logged_in? %>
+				<%= link_to SiteName, projects_path %>
+			<% else %>
+				<%= link_to SiteName, root_path %>
+			<% end %>
 		</div>
 		<div class="login_menu">
 			<% if logged_in? %>

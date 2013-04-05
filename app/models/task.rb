@@ -11,4 +11,16 @@ class Task < ActiveRecord::Base
 	scope :todo, :conditions => "worker_id=0 and done=0", :order => "id desc"
 	scope :doing, :conditions => "worker_id!=0 and done=0"
 	scope :done, :conditions => "done=1"
+
+	def todo?
+		self.worker_id == 0 && self.done == 0
+	end
+	
+	def doing?
+		self.worker_id != 0 && self.done == 0
+	end
+
+	def done?
+		self.done != 0
+	end
 end

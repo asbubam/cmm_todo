@@ -46,14 +46,14 @@ class UsersController < ApplicationController
 			@current_user = u
 			session[:user_id] = u.id
 
-			redirect_to root_path
+			redirect_to projects_path
 		else
 			@current_user = nil
 			session[:user_id] = nil
 			reset_session
 		
-			flash[:notice] = "아이디와 패스워드를 확인하세요."
-			redirect_to login_path
+			flash[:notice] = "Please check your ID and Password."
+			redirect_to root_path
 		end
 	end
 

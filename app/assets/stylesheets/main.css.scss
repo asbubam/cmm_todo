@@ -15,14 +15,23 @@
   }
 }
 
-$full_width:1124px;
-$main_left_width:180px;
+$full_width:1280px;
+$main_left_width:200px;
 $label_width:80px; 
 $text_field_width:120px;
 
 a {
 	text-decoration:none;
 	color:#333;
+}
+
+#flash_messages {
+	color:#aa0000;
+	background:#ffd266;
+	padding:0 5px;
+	font-family:Dotum;
+	font-weight:bold;
+	font-size:12px;
 }
 
 #header {
@@ -51,7 +60,7 @@ a {
 }
 
 #section {
-	border-left:5px solid red;
+	border-left:5px solid #1e4152;
 	@extend .clearfix;
 	max-width:$full_width;
 	margin:0 auto;
@@ -86,18 +95,21 @@ a {
 							text-decoration:underline;
 						}
 					}
-					.command {
-						float:right;
-						font-size:10px;
-						font-weight:normal;
-						margin-left:3px;
-						&.delete {
-							color:red;
+					.commands {
+						a.command {
+							float:right;
+							font-size:10px;
+							font-weight:bold;
+							margin-left:3px;
+							&.delete {
+								color:red;
+							}
+							&.update {
+								margin-right:10px;
+								color:blue;
+							}
 						}
-						&.update {
-							color:blue;
-						}
-					}
+					}	
 				}
 			}
 			.new_project {
@@ -109,8 +121,8 @@ a {
 			float:left;
 			.task_list {
 				.tasks {
+					width:290px;
 					margin:0 5px;
-					width:280px;
 					float:left;
 					.title {
 						background:#333;
@@ -191,7 +203,7 @@ a {
   a#header_link {
     position:fixed;
     display:scroll;
-    bottom:20px;
+    bottom:0;
     right:0;
     background:#fd9242;
     color:#000;
@@ -210,6 +222,9 @@ a {
     @extend .clearfix; 
     padding:5px 0; 
     line-height:150%; 
+		&.left {
+			float:left;
+		}
     label { 
       float:left; 
       width:$label_width; 
@@ -227,16 +242,27 @@ a {
 			width:$text_field_width;
 			border:1px solid #aaa;
     } 
+		textarea {
+			border:1px solid #aaa;
+		}
   } 
   .actions { 
-    input.submit { 
-      font-size:12px; 
-      margin-left:$label_width; 
-    } 
     input { 
+			border:1px solid #333;
+			background:#444;
+			color:white;
       font-size:12px; 
     } 
   } 
+	input {
+		&.left_float_submit {
+			float:left;
+			border:1px solid #333;
+			background:#444;
+			color:white;
+			font-size:12px; 
+		}
+	}
 }
 
 .new_task_wrapper {

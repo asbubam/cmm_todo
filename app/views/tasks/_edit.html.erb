@@ -5,8 +5,8 @@
 				<%= f.text_area :content, :class => "text focus", :rows => 3, :cols => 30 %>
 			</div>
 			<div class="actions">
-				<%= link_to "c", cancel_task_path(@task), :remote => true %>
 				<%= f.submit("↵") %>
+				<%= link_to "C", cancel_task_path(@task), :remote => true %>
 			</div>
 		<% end %>
 	</div>

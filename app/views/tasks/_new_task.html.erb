@@ -9,14 +9,16 @@
 		<% end %>
 	</div>
 
-	<div class="form_wrapper">
-		<%= form_for @task do |f| %>
-			<% unless @project.blank? %>
-				<%= f.hidden_field :project_id, :value => @project.id %>
+	<% unless @project.blank? %>
+		<div class="form_wrapper">
+			<%= form_for @task do |f| %>
+				<% unless @project.blank? %>
+					<%= f.hidden_field :project_id, :value => @project.id %>
+				<% end %>
+				<div class="field">
+					<%= f.text_area :content, :class => "text", :rows => 3 ,:autofocus => :true %>&nbsp;<%= f.submit("add") %>
+				</div>
 			<% end %>
-			<div class="field">
-				<%= f.text_area :content, :class => "text", :rows => 3 %>&nbsp;<%= f.submit("add") %>
-			</div>
-		<% end %>
-	</div>
+		</div>
+	<% end %>
 </div>

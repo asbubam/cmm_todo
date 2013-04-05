@@ -5,8 +5,8 @@
 				<%= f.text_field :title, :class => "text focus" %>
 			</div>
 			<div class="actions">
-				<%= link_to "c", cancel_project_path(@project), :remote => true %>
 				<%= f.submit("↵") %>
+				<%= link_to "c", cancel_project_path(@project), :remote => true %>
 			</div>
 		<% end %>
 	</div>

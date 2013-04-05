@@ -1,0 +1,31 @@
+<% @new_project ||= Project.new %>
+<div class="main_area">
+	<div class="main_left">
+		<ul class="projects">
+			<li class="project">
+				<div class="title">
+					<%= link_to "All Tasks", projects_path, :class => "#{'selected' if @project.blank? }" %>
+					[<%= Task.all.length %>]
+				</div>
+			</li>
+			<%= render :partial => '/projects/project', :collection => Project.find(:all, :order => "id desc") %>
+		</ul>
+	
+		<% if logged_in? %>
+			<div class="new_project">
+				<div class="form_wrapper">
+					<%= form_for @new_project do |f| %>
+						<div class="field" style="float:left;line-height:12px;">
+							<%= f.text_field :title, :class => "text" %><%= f.submit("↵", :class => "left_float_submit") %>
+						</div>
+					<% end %>
+				</div>
+			</div>
+		<% end %>
+	</div>
+
+	<div class="main_center">
+		<%= render :partial => "/tasks/new_task" %>
+		<%= render :partial => "/tasks/task_list" %>
+	</div>
+</div>

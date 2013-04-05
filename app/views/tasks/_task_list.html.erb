@@ -4,9 +4,9 @@
 			<div class="title"><%= state %></div>
 			<ul class="tasks">
 				<% unless @project.blank? %>
-					<%= render :partial => '/tasks/task', :collection => eval("@project.tasks.#{state.downcase.to_sym}") %>
+					<%= render :partial => '/tasks/task', :collection => eval("@project.tasks.#{state.downcase.to_sym}.find(:all, :order => 'id desc')") %>
 				<% else %>
-					<%= render :partial => '/tasks/task', :collection => eval("Task.#{state.downcase.to_sym}") %>
+					<%= render :partial => '/tasks/task', :collection => eval("Task.#{state.downcase.to_sym}.find(:all, :order => 'id desc')") %>
 				<% end %>
 			</ul>
 		</div>

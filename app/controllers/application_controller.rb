@@ -1,8 +1,11 @@
+include ActionView::Helpers::JavaScriptHelper 
 class ApplicationController < ActionController::Base
 
-	include ActionView::Helpers::JavaScriptHelper 
 
 	protect_from_forgery
+
+	class PermissionException < Exception; end
+	rescue_from PermissionException, :with => :content_403
 
 	before_filter :set_current_user
 
@@ -22,8 +25,9 @@ class ApplicationController < ActionController::Base
 	
 	def login_required 
 		if @current_user.blank?
-			flash[:notice] = "forbidden."
-			redirect_to login_path
+			#flash[:notice] = "forbidden."
+			#redirect_to login_path
+			raise PermissionException
 		end
 	end
 
@@ -34,6 +38,16 @@ class ApplicationController < ActionController::Base
 		else
 			@error_obj = _obj
 			render :template => "/main/error"
+		end
+	end
+
+protected
+	def content_403
+		if request.xhr?
+			render :js => "alert('Forbidden')" and return
+		else
+			flash[:notice] = "Forbidden"
+			redirect_to :back and return
 		end
 	end
 

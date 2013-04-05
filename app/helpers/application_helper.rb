@@ -14,4 +14,12 @@ module ApplicationHelper
 	def logged_in?
 		!@current_user.blank?
 	end
+
+	def auto_link(text)
+		return "" if text.blank? 
+		
+		text.gsub(/^(.*?)(http:\/\/|www\.)([a-z0-9\-_?\/:.]+)(.*)$/i) do |m|
+           "#{$1}<a href='#{$2 == 'http://' ? $2 : "http://#{$2}"}#{$3}'>#{$2}#{$3}</a>#{$4}"
+		end
+	end
 end

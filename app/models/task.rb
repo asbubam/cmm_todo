@@ -12,6 +12,16 @@ class Task < ActiveRecord::Base
 	scope :doing, :conditions => "worker_id!=0 and done=0"
 	scope :done, :conditions => "done=1"
 
+	def drop
+		if self.todo?
+			self.destroy
+		elsif self.doing?
+			self.update_attribute(:worker_id, 0)
+		elsif self.done?
+			self.update_attribute(:done, 0)
+		end
+	end
+
 	def todo?
 		self.worker_id == 0 && self.done == 0
 	end

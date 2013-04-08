@@ -1,8 +1,10 @@
 <%= content_tag_for :li, @project do %>
 	<div class="form_wrapper">
 		<%= form_for @project, :remote => true do |f| %>
-			<div class="field">
+			<div class="field inline">
 				<%= f.text_field :title, :class => "text focus" %>
+			</div>
+			<div class="actions inline">
 				<%= f.submit("↵", :class => "left_float_submit") %>
 				<%= link_to "c", cancel_project_path(@project), :remote => true %>
 			</div>

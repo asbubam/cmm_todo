@@ -26,31 +26,30 @@ class TasksController < ApplicationController
 	def take
 		@task = Task.find(params[:id])
 
-		if @task.update_attribute(:worker_id, @current_user.id)
-		else
-			flash[:notice] = "save task failed."
+		unless @task.update_attribute(:worker_id, @current_user.id)
+			flash[:notice] = "take task failed."
 		end	
 
-		redirect_to :back
+		redirect_to @task.project
 	end
 
 	def drop
 		@task = Task.find(params[:id])
 
-		if @task.done?
-			@task.update_attribute(:done, 0)
-		else 
-			@task.update_attribute(:worker_id, 0)
+		unless @task.drop
+			flash[:notice] = @task.errors.full_messages
 		end
 
-		redirect_to :back
+		redirect_to @task.project
 	end
 	
 	def done
 		@task = Task.find(params[:id])
-		@task.update_attribute(:done, 1)
+		unless @task.update_attribute(:done, 1)
+			flash[:notice] = "Failed."
+		end
 	
-		redirect_to :back
+		redirect_to @task.project
 	end
 
 	def destroy
@@ -58,7 +57,7 @@ class TasksController < ApplicationController
 			flash[:notice] = "destroy task failed."
 		end
 		
-		redirect_to :back
+		redirect_to @task.project
 	end
 
 protected

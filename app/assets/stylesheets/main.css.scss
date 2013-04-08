@@ -16,7 +16,7 @@
 }
 
 $full_width:1280px;
-$main_left_width:200px;
+$main_left_width:240px;
 $label_width:80px; 
 $text_field_width:120px;
 
@@ -61,16 +61,14 @@ a {
 
 #section {
 	border-left:5px solid #1e4152;
-	@extend .clearfix;
 	max-width:$full_width;
 	margin:0 auto;
 	font-family:Dotum;
 	font-size:12px;
 	color:#333;
 	.main_area {
+		@extend .clearfix;
 		.main_left {
-			margin-right:30px;
-			padding:5px;
 			float:left;
 			width:$main_left_width;
 			h5 {
@@ -80,44 +78,37 @@ a {
 			}
 			ul.projects {
 				margin:10px 0;
-				padding:0 0 0 20px;
+				padding:0 20px 0 20px;
 				li.project {
 					list-style:none;
-					height:16px;
-					margin:10px 0;
-					font-weight:bold;
-					.title {
-						float:left;
-						.selected {
-							color:red;
-						}
-						a:hover {
-							text-decoration:underline;
-						}
+					padding:5px 0;
+					position:relative;
+					a.title {
+						font-weight:bold;
+						&.selected { color:red; }
+						&:hover { text-decoration:underline; }
 					}
 					.commands {
-						a.command {
-							float:right;
+						position:absolute;
+						top:5px;
+						right:0;
+						text-align:right;
+						word-spacing:8px;
+						a {
 							font-size:10px;
 							font-weight:bold;
-							margin-left:3px;
-							&.delete {
-								color:red;
-							}
-							&.update {
-								margin-right:10px;
-								color:blue;
-							}
+							&.delete { color:red; }
+							&.update { color:blue; }
 						}
 					}	
 				}
 			}
-			.new_project {
+			.form_wrapper.new_project {
 				margin-top:30px;
+				padding:0 20px;
 			}
 		}
 		.main_center {
-			padding:10px 0;
 			float:left;
 			.task_list {
 				.tasks {
@@ -220,50 +211,56 @@ a {
 }
 
 .form_wrapper { 
-	padding-left:5px;
-  .field { 
-    @extend .clearfix; 
-    padding:5px 0; 
-    line-height:150%; 
-		&.left {
-			float:left;
-		}
-    label { 
-      float:left; 
-      width:$label_width; 
-      line-height:150%; 
-      color:#666; 
-    } 
-    input { 
-      font-size:12px; 
-    } 
-    select { 
-      font-size:12px; 
-    } 
-    input.text { 
-      float:left; 
-			width:$text_field_width;
-			border:1px solid #aaa;
-    } 
-		textarea {
-			border:1px solid #aaa;
-		}
-  } 
-  .actions { 
-    input { 
-			border:1px solid #333;
-			background:#444;
-			color:white;
-      font-size:12px; 
-    } 
-  } 
-	input {
-		&.left_float_submit {
-			float:left;
-			border:1px solid #333;
-			background:#444;
-			color:white;
-			font-size:12px; 
+	form {
+		@extend .clearfix;
+		.field { 
+			@extend .clearfix; 
+			padding:5px 0; 
+			line-height:150%; 
+			&.left {
+				float:left;
+			}
+			&.inline {
+				float:left;
+				padding:0;
+			}
+			label { 
+				float:left; 
+				width:$label_width; 
+				line-height:150%; 
+				color:#666; 
+			} 
+			input { 
+				font-size:12px; 
+				&.text {
+					float:left; 
+					width:$text_field_width;
+					border:1px solid #aaa;
+				}
+			} 
+			select { 
+				font-size:12px; 
+			} 
+			textarea {
+				border:1px solid #aaa;
+			}
+		} 
+		.actions { 
+			&.inline {
+				float:left;
+			}
+			input {
+				border:1px solid #333;
+				background:#444;
+				color:white;
+				font-size:12px; 
+				&.left_float_submit {
+					float:left;
+					border:1px solid #333;
+					background:#444;
+					color:white;
+				}
+			} 
 		}
 	}
 }

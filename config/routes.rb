@@ -13,7 +13,7 @@ CmmTodo::Application.routes.draw do
 
 	resources :tasks do
 		member do
-			post'take'
+			post 'take'
 			post 'done'
 			post 'drop'
 			get 'cancel'

@@ -4,7 +4,14 @@
 		<%= task.user.name %><%= " ▶ #{task.worker.name}" unless task.worker.blank? %>
 	</div>
 	<div class="content">
-		<%= truncate(auto_link(task.content).html_safe, :length => 88) %>
+		<%= truncate(auto_link(task.content), :length => 88).html_safe %>
+		<%# auto_link(task.content) %>
+
+		<%# doc = Nokogiri::HTML.parse(auto_link(task.content)) %>
+		<%# doc.at("//body") %>
+		<%# doc.at("//body").children.each do |c| %>
+			<%# "@@@#{c.text}@@@" %>
+		<%# end %>
 	</div>
 	<div class="created_at">
 		<%= "#{time_ago_in_words(task.created_at)} ago" %>
@@ -15,12 +22,10 @@
 	<div class="actions">
 		<% if task.todo? %>
 			<%= link_to "take", take_task_path(task), :method => :post %>
-			<%= link_to "del", task, :confirm => "Are you sure delete?", :method => :delete %>
 		<% elsif task.doing? %>
 			<%= link_to "done", done_task_path(task), :method => :post %>
-			<%= link_to "drop", drop_task_path(task), :method => :post %>
-		<% else %>
-			<%= link_to "drop", drop_task_path(task), :method => :post %>
 		<% end %>
+
+		<%= link_to "drop", drop_task_path(task), :method => :post, :confirm => "#{"Sure?" if task.todo?}" %>
 	</div>
 <% end %>

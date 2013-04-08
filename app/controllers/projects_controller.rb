@@ -7,23 +7,15 @@ class ProjectsController < ApplicationController
 		render :template => "/projects/index" and return
 	end
 
-	def new
-		@project = Project.new
-	end 
-
 	def create
 		@project = Project.new(params[:project].merge(:user_id => @current_user.id))
 
 		if @project.save
-			#flash[:notice] = "save project ok."
+			redirect_to @project
 		else
-			flash[:notice] = "save task failed."
+			redirect_to projects_path, :notice => "create project failed."
 		end
 
-		redirect_to projects_path
-	end
-
-	def edit
 	end
 
 	def update

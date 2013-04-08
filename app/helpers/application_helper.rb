@@ -18,8 +18,8 @@ module ApplicationHelper
 	def auto_link(text)
 		return "" if text.blank? 
 		
-		text.gsub(/^(.*?)(http:\/\/|www\.)([a-z0-9\-_?\/:.]+)(.*)$/i) do |m|
-           "#{$1}<a href='#{$2 == 'http://' ? $2 : "http://#{$2}"}#{$3}'>#{$2}#{$3}</a>#{$4}"
+		text.gsub(/^(.*?)(http[s]?:\/\/|www\.)([a-z0-9\-_?=\/:.]+)(.*)$/i) do |m|
+    	"#{$1}<a href='#{ $2.start_with?('http') ? $2 : "http://#{$2}" }#{$3}'>link</a>#{$4}"
 		end
 	end
 end
